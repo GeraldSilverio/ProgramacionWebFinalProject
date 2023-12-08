@@ -1,0 +1,126 @@
+﻿@using FinalProject.Core.Application.Enums;
+@using FinalProject.Core.Application.ViewModel.User;
+
+@model SaveUserViewModel
+@{
+    bool editMode = Model.Id == null ? false : true;
+    ViewData["Title"] = "Registro de Clientes";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+            <div class="col-6">
+                <div class="card mt-3">
+                    @if (Model.HasError)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <p>@Model.Error</p>
+                            <button type="button" class=" btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    <div class="card-body mt-3">
+                        <form class=" mb-3" method="post" asp-controller="Admin" asp-action="CreateClient" enctype="multipart/form-data">
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" asp-for="Nombre" placeholder="Ingrese su nombre" autocomplete="off" maxlength="40">
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label>Apellidos</label>
+                                    <input type="text" class="form-control" asp-for="Apellido" placeholder="Ingrese su nombre" autocomplete="off" maxlength="40">
+                                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+
+                                <div class="col">
+                                    <label>Cedula</label>
+                                    <input type="text" class="form-control" asp-for="Cedula" autocomplete="off" maxlength="11">
+                                    <span asp-validation-for="Cedula" class="text-danger"></span>
+                                    <small class="form-text text-muted">
+                                        La cedula debe contener un total 11 caracteres sin guiones
+                                    </small>
+                                </div>
+
+                                <div class="col">
+                                    <label>Nombre Usuario</label>
+                                    <input type="text" class="form-control" asp-for="NombreUsuario" placeholder="Ingrese su nombre de usuario" autocomplete="off">
+                                    <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label>Correo Electronico</label>
+                                    <input type="text" class="form-control" asp-for="Correo" placeholder="Ingrese su correo" autocomplete="off" maxlength="40">
+                                    <span asp-validation-for="Correo" class="text-danger"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label>Telefono</label>
+                                    <input type="number" class="form-control" asp-for="Telefono" placeholder="Ingrese su numero telefonico" autocomplete="off" maxlength="40">
+                                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Direccion</label>
+                                <input type="number" class="form-control" asp-for="Direccion" placeholder="Ingrese su direccion" autocomplete="off" maxlength="40">
+                                <span asp-validation-for="Direccion" class="text-danger"></span>
+                            </div>
+
+
+
+                            <div class="mb-3">
+                                <select class="form-select" asp-for="EstadoCivil">
+                                    Seleccione el tipo de cuenta que desea
+                                    <option value="Casado">Casado</option>
+                                    <option value="Soltero">Soltero</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" asp-for="SelectRole">
+                                    Seleccione el tipo de cuenta que desea
+                                    <option value="@((int)Roles.Abogado)">Abogado</option>
+                                    <option value="@((int)Roles.Cliente)">Cliente</option>
+                                </select>
+                            </div>
+                            <input type="hidden" asp-for="SelectRole" value="@((int)Roles.Admin)" />
+
+                            <input type="hidden" asp-for="Id" name="id" />
+
+                            <button type="submit" class="btn btn-outline-primary float-end ms-2">Crear cuenta</button>
+                            <a class="btn btn-secondary float-end" asp-controller="Admin" asp-action="AdminView">Volver</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+
+    .card {
+        border: 0.2px solid #ffff;
+        border-radius: 4px 4px 10px 10px;
+        box-shadow: 4px 4px 16px #000000;
+    }
+
+    label {
+        color: #5A5A5A;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+</style>

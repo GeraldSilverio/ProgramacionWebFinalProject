@@ -1,0 +1,65 @@
+﻿@using FinalProject.Core.Application.ViewModel.User;
+@model List<SaveUserViewModel>
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="container">
+    <div class="col-12 mt-5">
+
+        <div class="card">
+            <div class="card-header bg-color">
+                <h3 class="card-title text-light text-center">LISTADO DE Clientes</h3>
+            </div>
+
+            <div class="card-body">
+                <table class="table bg-white  table-responsive">
+                    <thead class="text-white bg-color">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Nombre de usuario</th>
+                            <th>Cedula</th>
+                            <th>Correo</th>
+                            <th>Estado Civil</th>
+                            <th>Direccion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Apellido</td>
+                                    <td>@item.NombreUsuario</td>
+                                    <td>@item.Cedula</td>
+                                    <td>@item.Correo</td>
+                                    <td>@item.EstadoCivil</td>
+                                    <td>@item.Direccion</td>
+                                    <td>
+                                        <a asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar</a>
+                                        <a asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id" title="Editar" class="dropdown-item"><i class="fa-solid fa-key"></i> Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var dropdownTrigger = document.querySelector('.btn-link');
+    var myDropdown = new bootstrap.Dropdown(dropdownTrigger);
+</script>
+
+<style>
+    .bg-color {
+        background-color: #FFAB27;
+    }
+</style>
