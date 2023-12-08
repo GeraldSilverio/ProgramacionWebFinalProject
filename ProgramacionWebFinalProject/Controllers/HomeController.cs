@@ -44,7 +44,7 @@ namespace ProgramacionWebFinalProject.Controllers
                 HttpContext.Session.Set("user", reponse);
                 if (reponse.Roles.Contains(Roles.Admin.ToString()))
                 {
-                    return RedirectToRoute(new { controller = "Admin", action = "Index" });
+                    return RedirectToRoute(new { controller = "Admin", action = "ClientView" });
                 }
                 else
                 {

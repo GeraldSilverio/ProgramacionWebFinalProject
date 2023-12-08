@@ -158,5 +158,24 @@ namespace FinalProject.Infraestructure.Identity.Services
             };
             return SaveUser;
         }
+        public async Task UpdateAsync(SaveUserViewModel request, string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            #region User Attributes
+            user.Nombre = request.Nombre;
+            user.Apellido = request.Apellido;
+            user.Cedula = request.Cedula;
+            user.Email = request.Correo;
+            user.UserName = request.NombreUsuario;
+            user.EstadoCivil = request.EstadoCivil;
+            user.PhoneNumber = request.Telefono;
+            #endregion
+            await _userManager.UpdateAsync(user);
+        }
+        public async Task DeleteAsync(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.DeleteAsync(user);
+        }
     }
 }

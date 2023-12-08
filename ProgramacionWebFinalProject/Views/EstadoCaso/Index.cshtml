@@ -1,0 +1,60 @@
+﻿@using FinalProject.Core.Application.ViewModel.StatusOfCase;
+@model List<StatusOfCaseViewModel>
+@{
+    ViewData["Title"] = "Tipos de ventas";
+}
+
+
+<div class="container">
+    <div class="col-6 offset-3 mt-5">
+        <div class="d-flex justify-content-end mb-2">
+            <a asp-controller="EstadoCaso" asp-action="Create" class="btn text-white bg-gradient bg-color fw-bold" style="outline-color:#D3D9DE;">Agregar nuevo tipo de caso</a>
+        </div>
+        <div class="card">
+            <div class="card-header bg-color">
+                <h3 class="card-title text-light text-center">TIPOS CASOS</h3>
+            </div>
+
+            <div class="card-body">
+                @if (Model.Count == 0 || Model == null)
+                {
+                    <h4 class="text-secondary fw-bolder">No hay estados de casos en este momento.</h4>
+                }
+                else
+                {
+                    <table class="table bg-white  table-responsive">
+                        <thead class="text-white bg-color">
+                            <tr>
+                                <th>Nombre</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var dropdownTrigger = document.querySelector('.btn-link');
+    var myDropdown = new bootstrap.Dropdown(dropdownTrigger);
+</script>
+
+<style>
+    .bg-color {
+        background-color: #cf671b;
+    }
+</style>

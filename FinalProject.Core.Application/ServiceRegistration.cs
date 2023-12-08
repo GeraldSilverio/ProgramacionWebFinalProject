@@ -1,5 +1,4 @@
-﻿using FinalProject.Core.Application.Interfaces.Repositories;
-using FinalProject.Core.Application.Interfaces.Services;
+﻿using FinalProject.Core.Application.Interfaces.Services;
 using FinalProject.Core.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -12,9 +11,10 @@ namespace FinalProject.Core.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITypeOfCaseServices, TypeOfCaseServices>();
+            services.AddTransient<IStatusOfCaseServices, StatusOfCaseService>();
             services.AddTransient(typeof(IGenericService<,,>), typeof(GenericService<,,>));
 
         }
-
     }
 }

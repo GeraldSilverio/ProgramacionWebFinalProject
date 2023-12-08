@@ -8,7 +8,9 @@ namespace FinalProject.Core.Application.Interfaces.Services
     {
         Task<AutheticationResponse> Authetication(LoginViewModel loginViewModel);
         Task<RegisterResponse> Create(SaveUserViewModel saveUserViewModel);
-
         Task<List<SaveUserViewModel>> GetAll();
+        Task<SaveUserViewModel> GetByIdAsync(string idUser);
+        Task UpdateAsync(SaveUserViewModel request, string id);
+        Task DeleteAsync(string id);
     }
 }

@@ -40,8 +40,8 @@
                                     <td>@item.EstadoCivil</td>
                                     <td>@item.Direccion</td>
                                     <td>
-                                        <a asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id" title="Editar" class="dropdown-item"><i class="fa-regular fa-pen-to-square"></i> Editar</a>
-                                        <a asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id" title="Editar" class="dropdown-item"><i class="fa-solid fa-key"></i> Eliminar</a>
+                                        <a class="btn btn-warning" asp-controller="Admin" asp-action="Update" asp-route-id="@item.Id"> Editar</a>
+                                        <a class="btn btn-danger" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id"> Eliminar</a>
                                     </td>
                                 </tr>
                             }

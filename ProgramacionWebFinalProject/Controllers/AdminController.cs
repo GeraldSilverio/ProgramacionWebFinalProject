@@ -38,7 +38,7 @@ namespace ProgramacionWebFinalProject.Controllers
                 var response = await _userService.Create(model);
                 if (!response.HasError)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("ClientView");
                 }
                 model.Error = response.Error;
                 model.HasError = response.HasError;
@@ -49,6 +49,24 @@ namespace ProgramacionWebFinalProject.Controllers
             {
                 return View(ex.Message);
             }
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await _userService.DeleteAsync(id);
+            return RedirectToAction("ClientView");   
+        }
+
+        public async Task<IActionResult> Update(string id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+            return View("CreateClient", user);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(SaveUserViewModel update)
+        {
+            await _userService.UpdateAsync(update, update.Id);
+            return RedirectToAction("ClientView");
         }
         #endregion
     }

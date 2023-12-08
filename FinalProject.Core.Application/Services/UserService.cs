@@ -29,9 +29,24 @@ namespace FinalProject.Core.Application.Services
             return await _accountService.Register(request);
         }
 
+        public async Task DeleteAsync(string id)
+        {
+            await _accountService.DeleteAsync(id);
+        }
+
         public async Task<List<SaveUserViewModel>> GetAll()
         {
             return await _accountService.GetAllAsync();
+        }
+
+        public async Task<SaveUserViewModel> GetByIdAsync(string idUser)
+        {
+            return await _accountService.GetByIdAsync(idUser);
+        }
+
+        public async Task UpdateAsync(SaveUserViewModel request, string id)
+        {
+            await _accountService.UpdateAsync(request, id);
         }
     }
 }

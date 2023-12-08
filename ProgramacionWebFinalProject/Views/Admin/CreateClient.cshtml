@@ -21,7 +21,7 @@
                         </div>
                     }
                     <div class="card-body mt-3">
-                        <form class=" mb-3" method="post" asp-controller="Admin" asp-action="CreateClient" enctype="multipart/form-data">
+                        <form class=" mb-3" method="post" asp-controller="Admin" asp-action="@(editMode ? "Update" : "CreateClient")" enctype="multipart/form-data">
 
                             <div class="row mb-3">
                                 <div class="col">
@@ -95,8 +95,8 @@
 
                             <input type="hidden" asp-for="Id" name="id" />
 
-                            <button type="submit" class="btn btn-outline-primary float-end ms-2">Crear cuenta</button>
-                            <a class="btn btn-secondary float-end" asp-controller="Admin" asp-action="AdminView">Volver</a>
+                            <button type="submit" class="btn btn-outline-primary float-end ms-2">"@(editMode ? "Editar" : "Crear")"</button>
+                            <a class="btn btn-secondary float-end" asp-controller="Admin" asp-action="ClientView">Volver</a>
                         </form>
                     </div>
                 </div>

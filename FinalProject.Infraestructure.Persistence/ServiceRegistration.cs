@@ -28,6 +28,8 @@ namespace FinalProject.Infraestructure.Persistence
             #endregion
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<ITypeOfCaseRepository, TypeOfCaseRepository>();
+            services.AddTransient<IStatusOfCaseRepository, StatusOfCaseRepository>();
+            services.AddTransient<ICaseRepository, CaseRepository>();
         }
     }
 }
