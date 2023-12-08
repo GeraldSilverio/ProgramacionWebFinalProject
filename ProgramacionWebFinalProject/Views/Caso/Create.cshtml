@@ -1,0 +1,126 @@
+﻿@using FinalProject.Core.Application.ViewModel.Case;
+@model SaveCaseViewModel
+@{
+    bool editMode = Model.Id == null ? false : true;
+    ViewData["Title"] = "Unete a la APP";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+            <div class="col-6">
+                <div class="card mt-3">
+
+                    <div class="card-body mt-3">
+                        <form class=" mb-3" method="post" asp-controller="Caso" asp-action="Create" enctype="multipart/form-data">
+
+                            <div class="row mb-3">
+
+                                <div class="col">
+                                    <label>Fecha Caso</label>
+                                    <input type="date" class="form-control" asp-for="FechaCaso" placeholder="Ingrese su nombre" autocomplete="off" maxlength="40">
+                                    <span asp-validation-for="FechaCaso" class="text-danger"></span>
+                                </div>
+
+                                <div class="col">
+                                    <label>Descripcion</label>
+                                    <input type="text" class="form-control" asp-for="Descripcion" placeholder="Ingrese su apellido" autocomplete="off">
+                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="row mb-3">
+
+                                <div class="col">
+                                    <label>Seleccione al cliente</label>
+                                    <select class="form-select" asp-for="IdCliente">
+                                        @foreach (var item in ViewBag.Cliente)
+                                        {
+                                            <option value="@item.Id">@item.Nombre</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <label>Seleccione al abogado</label>
+                                    <select class="form-select" asp-for="IdAbogado">
+                                        @foreach (var item in ViewBag.Abogado)
+                                        {
+                                            <option value="@item.Id">@item.Nombre</option>
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label>Latitud</label>
+                                <input type="text" class="form-control" asp-for="Latitud" placeholder="Ingrese su correo" autocomplete="off" maxlength="40">
+                                <span asp-validation-for="Latitud" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Longitud</label>
+                                <input type="text" class="form-control" asp-for="Longitud" placeholder="Ingrese su correo" autocomplete="off" maxlength="40">
+                                <span asp-validation-for="Longitud" class="text-danger"></span>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label>Seleccione el tipo de caso</label>
+                                    <select class="form-select" asp-for="IdTipoCaso">
+                                        @foreach (var item in ViewBag.Tipo)
+                                        {
+                                            <option value="@item.Id">@item.Nombre</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <label>Seleccione el estado del caso</label>
+                                    <select class="form-select" asp-for="IdEstadoCaso">
+                                        @foreach (var item in ViewBag.Estado)
+                                        {
+                                            <option value="@item.Id">@item.Nombre</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <input type="hidden" asp-for="Id" name="id" />
+
+                            <button type="submit" class="btn btn-outline-primary float-end ms-2">Crear cuenta</button>
+                            <a class="btn btn-secondary float-end" asp-controller="Admin" asp-action="AdminView">Volver</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+
+    .card {
+        border: 0.2px solid #ffff;
+        border-radius: 4px 4px 10px 10px;
+        box-shadow: 4px 4px 16px #000000;
+    }
+
+    label {
+        color: #5A5A5A;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+</style>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FinalProject.Core.Application.DTOs;
+using FinalProject.Core.Application.ViewModel.Case;
 using FinalProject.Core.Application.ViewModel.Login;
 using FinalProject.Core.Application.ViewModel.StatusOfCase;
 using FinalProject.Core.Application.ViewModel.TypeOfCase;
@@ -32,6 +33,12 @@ namespace FinalProject.Core.Application.Mapping
                 .ReverseMap(); 
             
             CreateMap<EstadoCaso, StatusOfCaseViewModel>()
+                .ReverseMap();
+
+            CreateMap<Caso, SaveCaseViewModel>()
+                .ReverseMap(); 
+            
+            CreateMap<Caso, CaseViewModel>()
                 .ReverseMap();
                 
         }

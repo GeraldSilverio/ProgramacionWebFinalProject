@@ -3,7 +3,7 @@
     public class SaveCaseViewModel
     {
         public int Id { get; set; }
-        public DateTime FechaCaso { get; set; }
+        public DateTime FechaCaso { get; set; } = DateTime.Now;
         public string IdCliente { get; set; }
         public string Latitud { get; set; }
         public string Longitud { get; set; }
