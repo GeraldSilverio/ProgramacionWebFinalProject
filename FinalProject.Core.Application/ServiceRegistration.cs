@@ -13,6 +13,7 @@ namespace FinalProject.Core.Application
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ITypeOfCaseServices, TypeOfCaseServices>();
             services.AddTransient<IStatusOfCaseServices, StatusOfCaseService>();
+            services.AddTransient<ICaseServices, CaseService>();
             services.AddTransient(typeof(IGenericService<,,>), typeof(GenericService<,,>));
 
         }
