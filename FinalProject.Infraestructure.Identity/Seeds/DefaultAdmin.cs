@@ -27,7 +27,7 @@ namespace FinalProject.Infraestructure.Identity.Seeds
                 var user = await userManager.FindByNameAsync(defaultAdmin.UserName);
                 if (user is null)
                 {
-                    await userManager.CreateAsync(defaultAdmin, "123AdminC#");
+                    await userManager.CreateAsync(defaultAdmin, "123456");
                     await userManager.AddToRoleAsync(defaultAdmin,Roles.Admin.ToString());
                 }
             }

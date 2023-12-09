@@ -91,7 +91,7 @@ namespace FinalProject.Infraestructure.Identity.Services
                 EmailConfirmed = true,
             };
 
-            var result = await _userManager.CreateAsync(user, "123UserC#");
+            var result = await _userManager.CreateAsync(user, "123456");
             if (result.Succeeded)
             {
                 switch (request.SelectRole)

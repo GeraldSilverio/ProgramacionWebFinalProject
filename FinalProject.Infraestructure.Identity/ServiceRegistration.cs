@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace FinalProject.Infraestructure.Identity
 {
@@ -21,7 +22,7 @@ namespace FinalProject.Infraestructure.Identity
             else
             {
                 services.AddDbContext<IdentityContext>(options =>
-                {
+                {                
                     options.EnableSensitiveDataLogging();
                     options.UseSqlServer(configuration.GetConnectionString("IdentityConnection"),
                     m => m.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName));
@@ -30,7 +31,14 @@ namespace FinalProject.Infraestructure.Identity
             #endregion
 
             #region Identity
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+            })
                 .AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(options =>

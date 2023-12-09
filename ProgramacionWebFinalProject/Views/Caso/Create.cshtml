@@ -2,7 +2,7 @@
 @model SaveCaseViewModel
 @{
     bool editMode = Model.Id == null ? false : true;
-    ViewData["Title"] = "Unete a la APP";
+    ViewData["Title"] = "Reporte de Casos";
 }
 
 
@@ -13,7 +13,7 @@
                 <div class="card mt-3">
 
                     <div class="card-body mt-3">
-                        <form class=" mb-3" method="post" asp-controller="Caso" asp-action="Create" enctype="multipart/form-data">
+                        <form class=" mb-3" method="post" asp-controller="Caso" asp-action="@(editMode ? "Update" : "Create")">
 
                             <div class="row mb-3">
 
@@ -95,8 +95,8 @@
 
                             <input type="hidden" asp-for="Id" name="id" />
 
-                            <button type="submit" class="btn btn-outline-primary float-end ms-2">Crear cuenta</button>
-                            <a class="btn btn-secondary float-end" asp-controller="Admin" asp-action="AdminView">Volver</a>
+                            <button type="submit" class="btn btn-outline-primary float-end ms-2">Guardar Caso</button>
+                            <a class="btn btn-secondary float-end" asp-controller="Caso" asp-action="Index">Volver</a>
                         </form>
                     </div>
                 </div>

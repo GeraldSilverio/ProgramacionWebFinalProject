@@ -5,5 +5,6 @@ namespace FinalProject.Core.Application.Interfaces.Services
 {
     public interface ICaseServices:IGenericService<Caso,SaveCaseViewModel,CaseViewModel>
     {
+        Task<MemoryStream> GenerarPDF(int Id);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FinalProject.Core.Application.Interfaces.Services;
 using FinalProject.Core.Application.ViewModel.StatusOfCase;
 using FinalProject.Core.Application.ViewModel.TypeOfCase;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProgramacionWebFinalProject.Controllers

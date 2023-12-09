@@ -30,19 +30,19 @@ namespace FinalProject.Core.Application.Services
             await _genericRepository.DeleteAsync(entity);
         }
 
-        public async Task<List<ViewModel>> GetAllAsync()
+        public virtual async Task<List<ViewModel>> GetAllAsync()
         {
             var entities = _mapper.Map<List<ViewModel>>(await _genericRepository.GetAllAsync());
             return entities;
         }
 
-        public async Task<ViewModel> GetByIdAsync(int id)
+        public virtual async Task<ViewModel> GetByIdAsync(int id)
         {
             var entity = _mapper.Map<ViewModel>(await _genericRepository.GetByIdAsync(id));
             return entity;
         }
 
-        public async Task UpdateAsync(SaveViewModel model, int id)
+        public virtual async Task UpdateAsync(SaveViewModel model, int id)
         {
             var entity = _mapper.Map<Model>(model);
             await _genericRepository.UpdateAsync(entity, id);

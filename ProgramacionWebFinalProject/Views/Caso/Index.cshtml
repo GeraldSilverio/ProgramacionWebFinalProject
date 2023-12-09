@@ -1,1 +1,77 @@
-﻿<h2>INDEX CASOS</h2>
+﻿@using FinalProject.Core.Application.ViewModel.Case;
+@model List<CaseViewModel>
+@{
+    ViewData["Title"] = "Reporte de Casos";
+}
+
+
+<div class="container">
+    <div class="col-12 mt-5">
+        <div class="d-flex justify-content-end mb-2">
+            <a asp-controller="Caso" asp-action="Create" class="btn text-white bg-gradient bg-color fw-bold" style="outline-color:#D3D9DE;">Agregar nuevo caso</a>
+        </div>
+        <div class="card">
+            <div class="card-header bg-color">
+                <h3 class="card-title text-light text-center">REPORTE DE CASOS</h3>
+            </div>
+
+            <div class="card-body">
+                @if (Model.Count == 0 || Model == null)
+                {
+                    <h4 class="text-secondary fw-bolder">No hay casos en este momento.</h4>
+                }
+                else
+                {
+                    <table class="table bg-white  table-responsive">
+                        <thead class="text-white bg-color">
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Abogado</th>
+                                <th>Descripción</th>
+                                <th>Tipo de Caso</th>
+                                <th>Estado del Caso</th>
+                                <th>Latitud</th>
+                                <th>Longitud</th>
+                                <th>Fecha de Caso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.NombreCliente</td>
+                                        <td>@item.NombreAbogado</td>
+                                        <td>@item.Descripcion</td>
+                                        <td>@item.NombreTipoCaso</td>
+                                        <td>@item.NombreEstadoCaso</td>
+                                        <td>@item.Latitud</td>
+                                        <td>@item.Longitud</td>
+                                        <td>@item.FechaCaso</td>
+                                        <td>
+                                            <a class="btn btn-warning" asp-controller="Caso" asp-action="Update" asp-route-id="@item.Id"> Editar</a>
+                                            <a class="btn btn-danger" asp-controller="Caso" asp-action="DownloadCasePDF" asp-route-id="@item.Id"> Imprimir</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var dropdownTrigger = document.querySelector('.btn-link');
+    var myDropdown = new bootstrap.Dropdown(dropdownTrigger);
+</script>
+
+<style>
+    .bg-color {
+        background-color: #cf671b;
+    }
+</style>
