@@ -37,12 +37,11 @@ namespace FinalProject.Core.Application.Services
                     column =>
                     {
                         column.Item().Text($"Fecha: {detalles.FechaCaso}");
-                        column.Item().Text($"Id del Caso: {detalles.Id}");
                         column.Item().Text($"Nombre del Cliente: {detalles.NombreCliente}");
                         column.Item().Text($"Tipo de Caso: {detalles.NombreTipoCaso}");
                         column.Item().Text($"Ubicación: Longitud: {detalles.Longitud} y Latitud: {detalles.Latitud}");
                         column.Item().Text($"Descripción: {detalles.Descripcion}");
-                        column.Item().Text($"Nombre del Abogado: {detalles.NombreCliente}");
+                        column.Item().Text($"Nombre del Abogado: {detalles.NombreAbogado}");
                         column.Item().Text($"Estado del Caso: {detalles.NombreEstadoCaso}");
                     });
             }));
@@ -60,7 +59,7 @@ namespace FinalProject.Core.Application.Services
             var list = new List<CaseViewModel>();
             var casos = await caseRepository.GetAllAsync();
 
-            foreach(var caso in casos)
+            foreach (var caso in casos)
             {
                 var abogado = await userService.GetByIdAsync(caso.IdAbogado);
                 var client = await userService.GetByIdAsync(caso.IdCliente);
@@ -81,7 +80,7 @@ namespace FinalProject.Core.Application.Services
                 };
 
                 list.Add(casosViewModel);
-            }                       
+            }
 
             return list;
         }
@@ -108,7 +107,7 @@ namespace FinalProject.Core.Application.Services
                 IdAbogado = abogado.Id,
                 IdCliente = client.Id,
                 IdEstadoCaso = estadoCaso.Id,
-                IdTipoCaso =  tipoCaso.Id
+                IdTipoCaso = tipoCaso.Id
             };
 
             return casoView;

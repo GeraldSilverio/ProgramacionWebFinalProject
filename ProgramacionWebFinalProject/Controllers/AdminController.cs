@@ -54,7 +54,7 @@ namespace ProgramacionWebFinalProject.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             await _userService.DeleteAsync(id);
-            return RedirectToAction("ClientView");   
+            return RedirectToAction("ClientView");
         }
 
         public async Task<IActionResult> Update(string id)
@@ -68,6 +68,7 @@ namespace ProgramacionWebFinalProject.Controllers
             await _userService.UpdateAsync(update, update.Id);
             return RedirectToAction("ClientView");
         }
+
         #endregion
     }
 }

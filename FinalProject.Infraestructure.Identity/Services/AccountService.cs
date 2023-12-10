@@ -50,6 +50,7 @@ namespace FinalProject.Infraestructure.Identity.Services
             response.Nombre = user.Nombre;
             response.Apellido = user.Apellido;
             response.Direccion = user.Direccion;
+            response.Telefono = user.PhoneNumber;
 
             var role = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
             response.Roles = role.ToList();
@@ -82,7 +83,7 @@ namespace FinalProject.Infraestructure.Identity.Services
             {
                 UserName = request.NombreUsuario,
                 Email = request.Correo,
-                PhoneNumber = request.Phone,
+                PhoneNumber = request.Telefono,
                 Nombre = request.Nombre,
                 Apellido = request.Apellido,
                 Cedula = request.Cedula,
@@ -176,6 +177,11 @@ namespace FinalProject.Infraestructure.Identity.Services
         {
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.DeleteAsync(user);
+        }
+
+        public async Task SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

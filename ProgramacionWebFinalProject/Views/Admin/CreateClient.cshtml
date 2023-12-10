@@ -78,15 +78,15 @@
 
 
                             <div class="mb-3">
+                                <label>Seleccione su Estado Civil</label>
                                 <select class="form-select" asp-for="EstadoCivil">
-                                    Seleccione el tipo de cuenta que desea
                                     <option value="Casado">Casado</option>
                                     <option value="Soltero">Soltero</option>
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label>Seleccione el tipo de cuenta que desea</label>
                                 <select class="form-select" asp-for="SelectRole">
-                                    Seleccione el tipo de cuenta que desea
                                     <option value="@((int)Roles.Abogado)">Abogado</option>
                                     <option value="@((int)Roles.Cliente)">Cliente</option>
                                 </select>

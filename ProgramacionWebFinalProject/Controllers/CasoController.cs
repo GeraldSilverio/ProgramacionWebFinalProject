@@ -25,7 +25,7 @@ namespace ProgramacionWebFinalProject.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {            
+        {
             return View(await caseServices.GetAllAsync());
         }
 
@@ -42,7 +42,7 @@ namespace ProgramacionWebFinalProject.Controllers
         public async Task<IActionResult> Create(SaveCaseViewModel saveCaseViewModel)
         {
             await caseServices.CreateAsync(saveCaseViewModel);
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
 
@@ -53,14 +53,14 @@ namespace ProgramacionWebFinalProject.Controllers
             var user = await userService.GetAll();
             ViewBag.Abogado = user.Where(x => x.Roles.Contains(Roles.Abogado.ToString()));
             ViewBag.Cliente = user.Where(x => x.Roles.Contains(Roles.Cliente.ToString()));
-            SaveCaseViewModel editCase = mapper.Map<SaveCaseViewModel>(await caseServices.GetByIdAsync(id));           
+            SaveCaseViewModel editCase = mapper.Map<SaveCaseViewModel>(await caseServices.GetByIdAsync(id));
             return View("Create", editCase);
         }
 
         [HttpPost]
         public async Task<IActionResult> Update(SaveCaseViewModel saveCaseViewModel, int id)
         {
-            await caseServices.UpdateAsync(saveCaseViewModel, id);           
+            await caseServices.UpdateAsync(saveCaseViewModel, id);
             return RedirectToAction("Index");
         }
 

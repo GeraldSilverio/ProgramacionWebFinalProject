@@ -11,5 +11,6 @@ namespace FinalProject.Core.Application.Interfaces.Services
         Task<SaveUserViewModel> GetByIdAsync(string idUser);
         Task UpdateAsync(SaveUserViewModel request, string id);
         Task DeleteAsync(string id);
+        Task SignOutAsync();
     }
 }

@@ -1,7 +1,7 @@
 ﻿@using FinalProject.Core.Application.ViewModel.Case;
 @model SaveCaseViewModel
 @{
-    bool editMode = Model.Id == null ? false : true;
+    bool editMode = Model.Id == 0 ? false : true;
     ViewData["Title"] = "Reporte de Casos";
 }
 
@@ -19,13 +19,13 @@
 
                                 <div class="col">
                                     <label>Fecha Caso</label>
-                                    <input type="date" class="form-control" asp-for="FechaCaso" placeholder="Ingrese su nombre" autocomplete="off" maxlength="40">
+                                    <input type="date" class="form-control" asp-for="FechaCaso" autocomplete="off" maxlength="40">
                                     <span asp-validation-for="FechaCaso" class="text-danger"></span>
                                 </div>
 
                                 <div class="col">
                                     <label>Descripcion</label>
-                                    <input type="text" class="form-control" asp-for="Descripcion" placeholder="Ingrese su apellido" autocomplete="off">
+                                    <input type="text" class="form-control" asp-for="Descripcion" placeholder="Ingrese su descripcion" autocomplete="off">
                                     <span asp-validation-for="Descripcion" class="text-danger"></span>
                                 </div>
 
@@ -57,13 +57,13 @@
 
                             <div class="mb-3">
                                 <label>Latitud</label>
-                                <input type="text" class="form-control" asp-for="Latitud" placeholder="Ingrese su correo" autocomplete="off" maxlength="40">
+                                <input type="number" class="form-control" asp-for="Latitud" placeholder="Ingrese su latitud" autocomplete="off" maxlength="40">
                                 <span asp-validation-for="Latitud" class="text-danger"></span>
                             </div>
 
                             <div class="mb-3">
                                 <label>Longitud</label>
-                                <input type="text" class="form-control" asp-for="Longitud" placeholder="Ingrese su correo" autocomplete="off" maxlength="40">
+                                <input type="number" class="form-control" asp-for="Longitud" placeholder="Ingrese su longitud" autocomplete="off" maxlength="40">
                                 <span asp-validation-for="Longitud" class="text-danger"></span>
                             </div>
 

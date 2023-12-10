@@ -48,5 +48,11 @@ namespace FinalProject.Core.Application.Services
         {
             await _accountService.UpdateAsync(request, id);
         }
+
+        public async Task SignOutAsync()
+        {
+            await _accountService.SignOutAsync();
+
+        }
     }
 }

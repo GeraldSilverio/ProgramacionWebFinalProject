@@ -7,7 +7,6 @@
         public string NombreUsuario { get; set; }
         public string Cedula { get; set; }
         public string Direccion { get; set; }
-        public string Phone { get; set; }
         public int SelectRole { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
